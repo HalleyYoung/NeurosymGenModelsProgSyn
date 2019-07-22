@@ -37,7 +37,7 @@ def toMat(for_tup, img):
 
 
 model = LSTMAE()
-model.load_state_dict(torch.load("rnn_ae_synth_prog2prog/lstmae_epoch_550.pth"))
+model.load_state_dict(torch.load("lstmae_epoch_550.pth"))
 model.eval()
 
 
@@ -52,18 +52,17 @@ comp_progs = [np.array([progs_[i][k][1] for k in range(12)]) for i in range(9999
 imgs = []
 
 for i_ in range(10000):
-	new_img = img_as_float(resize(imread("synthetic_completion2/trainA/cmpb" + ("%04d" % i_) + ".png"), (256,256,3)))
+	new_img = img_as_float(resize(imread(""), (256,256,3)))
 	prog = torch.from_numpy(np.array([progs[i_] for k in range(64)])).float()
 	new_prog = model(prog)[0].detach().numpy()[0,:,:]
 	print("real " + str(new_prog[0,8:18]))
 	new_prog = comp_progs[i_]
-	print("comp " + str(new_prog[0,8:18]))
 	tot_good = 0
 	for (index, for_tup_im) in enumerate(list(new_prog)):
 			if np.isnan(for_tup_im).any() or (progs[i_] == np.zeros(18)).all():
 				continue
 			tot_good += 1
-			i_offset = int(for_tup_im[0]*9.01)
+			i_offset = int(for_tup_im[0]*.01)
 			j_offset = int(for_tup_im[1]*9.01)
 			i_n = int(for_tup_im[2]*9.01)
 			j_n = int(for_tup_im[3]*9.01)
@@ -89,7 +88,7 @@ for i_ in range(10000):
 							#print("error")
 	#print(str(i_) + ": " + str(tot_good))
 
-	imsave("approx-prog-images-synth/cmpb" + ("%04d" % i_) + ".png", new_img)
+	imsave("approx-prog-images/cmpb" + ("%04d" % i_) + ".png", new_img)
 
 """
 ims = list(imgs)

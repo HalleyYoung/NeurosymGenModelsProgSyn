@@ -8,7 +8,7 @@ import numpy as np
 from torch.autograd import Variable
 
 
-data = pickle.load(open("synthmat.npy"))
+#data = pickle.load(open("synthfacade.npy"))
 
 train_loader = torch.utils.data.DataLoader([(torch.from_numpy(data[i][0]).float(), torch.from_numpy(data[i][1]).float()) for i in range(len(data) - 100)],
     batch_size=64, shuffle=True)
