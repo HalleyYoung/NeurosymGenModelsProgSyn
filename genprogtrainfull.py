@@ -173,7 +173,7 @@ def toImageArr(for_tup_arr, fname, img):
 		imsave("facade-third-only-train/" + fname, img2)
 
 
-buildings = [img_as_float(imread("../facades_third/trainB/" + i)) for i in sorted(list(os.walk("../facades_third/trainB"))[-1][2])]
+buildings = [img_as_float(imread("facades/train/" + i)) for i in sorted(list(os.walk("facades/train"))[-1][2])]
 image_mats = [np.load("buildings_mat_train_full/" + i) for i in sorted(list(os.walk("buildings_mat_train_full"))[-1][2])]
 
 for z_ in range(len(image_mats)):

@@ -237,12 +237,12 @@ def toPngWithAlpha(q,z):
 	start[:,:,3] = img_as_ubyte(imread("approx-" + str(img_size) + "-" + str(q) + "/" + str(z) + "--approx-mask.png"))
 	imsave("approx-" + str(img_size) + "-" + str(q) + "/" + "approx-" + str(z) + "-alpha.png", start)
 
-image_mats = sorted(list(os.walk("buildings_mat_test_full"))[-1][2])
-buildings = sorted(list(os.walk("../facades_third/testB"))[-1][2])
+image_mats = sorted(list(os.walk("buildings_mat_test_third"))[-1][2])
+buildings = sorted(list(os.walk("../facades/test"))[-1][2])
 
 for z_ in range(1):#len(image_mats)):	
-  	img_mat = np.load("buildings_mat_test_third/mat-cmpb0088.npy")#np.load("buildings_mat_train_test/" + str(image_mats[z_]))
-  	img = imread("../facades_third/testB/cmpb0088.png")#imread("datasets/facades_third/trainB/" + buildings[z_])[:,:,:3]
+  	img_mat = np.load("buildings_mat_train_test/" + str(image_mats[z_]))
+  	img = imread("facades/test/" + buildings[z_])[:,:,:3]
 	good_for_tups = []
 	
 	for i_offset in range(15):

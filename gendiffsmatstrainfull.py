@@ -26,10 +26,10 @@ bf = cv2.BFMatcher(cv2.NORM_HAMMING)
 
 
 def toMats():
-    images = sorted(list(os.walk("../facades_third/testB/"))[-1][2])
+    images = sorted(list(os.walk("facades/train/"))[-1][2])
     for (index, image) in enumerate(images):
 		print(index)
-		img = imread("../facades_third/testB/" + image)
+		img = imread("facades/train" + image)
 		imsave("imgread.png", img)
 		img = img[:,:,:3]
 		tot_height = img.shape[0]
@@ -109,8 +109,7 @@ def toMats():
 
 						
 		#np.save("mat_good.npy", img_mat_loose)
-		np.save("buildings_mat_test_third/mat-" + image.split(".")[0] + ".npy", img_third)
-		np.save("buildings_mat_test_full/mat-" + image.split(".")[0] + ".npy", img_mat_loose)			
+		np.save("buildings_mat_train_full/mat-" + image.split(".")[0] + ".npy", img_mat_loose)
 		print("saved")
 
 

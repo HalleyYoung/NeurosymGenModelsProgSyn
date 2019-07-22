@@ -37,12 +37,12 @@ def toMat(for_tup, img):
 
 
 model = LSTMAE()
-model.load_state_dict(torch.load("rnn_ae_synth_prog2prog/lstmae_epoch_550.pth"))
+model.load_state_dict(torch.load("lstmae_epoch_550.pth"))
 model.eval()
 
 
 vaemodel = VAE(10)
-vaemodel.load_state_dict(torch.load("conv_tiles_synth/vae_epoch_50.pth"))
+vaemodel.load_state_dict(torch.load("conv_epoch_50.pth"))
 vaemodel.eval()
 
 progs_ = pickle.load(open("mat2matsynth2.pcl"))
@@ -63,14 +63,14 @@ for i_ in range(10000):
 			if np.isnan(for_tup_im).any() or (progs[i_] == np.zeros(18)).all():
 				continue
 			tot_good += 1
-			i_offset = int(for_tup_im[0]*9.01)
-			j_offset = int(for_tup_im[1]*9.01)
-			i_n = int(for_tup_im[2]*9.01)
-			j_n = int(for_tup_im[3]*9.01)
-			i_size = int(for_tup_im[4]*5.01)
-			j_size = int(for_tup_im[5]*5.01)
-			i_mul = max(1, int(for_tup_im[6]*9.01))
-			j_mul =max(1, int(for_tup_im[7]*9.01))
+			i_offset = int(for_tup_im[0]*15.01)
+			j_offset = int(for_tup_im[1]*15.01)
+			i_n = int(for_tup_im[2]*15.01)
+			j_n = int(for_tup_im[3]*15.01)
+			i_size = int(for_tup_im[4]*15.01)
+			j_size = int(for_tup_im[5]*15.01)
+			i_mul = max(1, int(for_tup_im[6]*15.01))
+			j_mul =max(1, int(for_tup_im[7]*15.01))
 			img_comp = torch.from_numpy(np.array([for_tup_im[8:18] for k in range(64)])).float()
 
 			img = img_as_ubyte(np.transpose(vaemodel.decode(img_comp).detach().numpy()[0,:,:,:]))
