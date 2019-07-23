@@ -64,7 +64,7 @@ def train(epoch):
           epoch, train_loss / len(train_loader.dataset)))
 
     if epoch % 50 == 0:
-        torch.save(model.state_dict(), '%s/vae_epoch_%d.pth' % (outf, epoch))
+        torch.save(model.state_dict(), '%s/nn_epoch_%d.pth' % (outf, epoch))
 
 
 def test(epoch):
