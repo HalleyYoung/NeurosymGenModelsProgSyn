@@ -173,8 +173,8 @@ def toImageArr(for_tup_arr, fname, img):
 		imsave("facade-third-only-train/" + fname, img2)
 
 
-buildings = [img_as_float(imread("../facades_third/trainB/" + i)) for i in sorted(list(os.walk("../facades_third/trainB"))[-1][2])]
-image_mats = [np.load("buildings_mat_train_full/" + i) for i in sorted(list(os.walk("buildings_mat_train_full"))[-1][2])]
+buildings = [img_as_float(imread("../facades/train/" + i)) for i in sorted(list(os.walk("../facades/train"))[-1][2])]
+image_mats = [np.load("buildings_mat_train_third/" + i) for i in sorted(list(os.walk("buildings_mat_train_third"))[-1][2])]
 
 for z_ in range(len(image_mats)):
 	print(z_)
@@ -249,8 +249,8 @@ for z_ in range(len(image_mats)):
 	full_set = full_set[:10]
 
 	full_set.reverse()
-	toImageArr(full_set, "cmpb" + ("%04d" % z_) + ".png", img)
+    #toImageArr(full_set, "cmpb" + ("%04d" % z_) + ".png", img)
 	#toMaskArr(full_set, "approx-" + str(img_size) + "-" + str(q__) + "/" + str(z_) + "--approx-mask.png", img)
 	#toPngWithAlpha(q__, z_)
-	toProg(full_set, "facades-approx-full-train-prog" + "/" + "cmpb" + ("%04d" % z_) + "-prog.pcl", img)
+	toProg(full_set, "train_third_prog/" + ("%04d" % z_) + "-prog.pcl", img)
 

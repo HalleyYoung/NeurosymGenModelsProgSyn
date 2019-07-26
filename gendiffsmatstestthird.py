@@ -30,7 +30,6 @@ def toMats():
     for (index, image) in enumerate(images):
 		print(index)
 		img = imread("facades/test/" + image)
-		imsave("imgread.png", img)
 		img = img[:,:,:3]
 		tot_height = img.shape[0]
 		tot_width = img.shape[1]

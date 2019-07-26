@@ -29,7 +29,7 @@ def toMats():
     images = sorted(list(os.walk("facades/train/"))[-1][2])
     for (index, image) in enumerate(images):
 		print(index)
-		img = imread("facades/train" + image)
+		img = imread("facades/train/" + image)
 		imsave("imgread.png", img)
 		img = img[:,:,:3]
 		tot_height = img.shape[0]

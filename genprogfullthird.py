@@ -321,8 +321,8 @@ for z_ in range(1):#len(image_mats)):
 
 	full_set.reverse()
 	#toImageArr(full_set, "cmpb" + ("%04d" % z_), img)
-	toImageArr(full_set, "test_third.png", img)
+    #toImageArr(full_set, "test_third.png", img)
 	#toMaskArr(full_set, "approx-" + str(img_size) + "-" + str(q__) + "/" + str(z_) + "--approx-mask.png", img)
 	#toPngWithAlpha(q__, z_)
 	#toProg(full_set, "facades-approx-third-train-prog" + "/" + str(q__) + "-prog.pcl", img)
-	toProg(full_set, "prog_extract.pcl", img)
+	toProg(full_set, "test_third_prog/gprog" + ("%04d" % z) + "_extract.pcl", img)

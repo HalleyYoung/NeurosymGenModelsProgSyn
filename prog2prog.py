@@ -10,6 +10,26 @@ from torch.autograd import Variable
 
 #data = pickle.load(open("synthfacade.npy"))
 
+third = sorted(list(os.walk("train_third_prog"))[0][2])
+full  = sorted(list(os.walk("train_full_prog"))[0][2])
+
+third = [map(toMat, pickle.load("train_third_prog/" + i) for i in third)]
+full = [map(toMat, pickle.load("train_full_prog/" + i) for i in third)]
+
+data = [(third(i), full(i)) for i in range(len(third))]
+
+def toMat(for_tup):
+    x = np.zeros(8)
+    x[0] = for_tup.i_offset/9.0
+    x[1] = for_tup.j_offset/9.0
+    x[2] = for_tup.i_n/9.0
+    x[3] = for_tup.j_n/9.0
+    x[4] = for_tup.i_size/5.0
+    x[5] = for_tup.j_size/5.0
+    x[6] = for_tup.i_mul/9.0
+    x[7] = for_tup.j_mul/9.0
+    return x
+
 train_loader = torch.utils.data.DataLoader([(torch.from_numpy(data[i][0]).float(), torch.from_numpy(data[i][1]).float()) for i in range(len(data) - 100)],
     batch_size=64, shuffle=True)
 test_loader = torch.utils.data.DataLoader([(torch.from_numpy(data[i][0]).float(), torch.from_numpy(data[i][1]).float()) for i in range(len(data) - 100, len(data))],
