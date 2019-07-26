@@ -17,8 +17,8 @@ test = a[(total/10):]
 os.mkdir("train")
 os.mkdir("test")
 
-for val in train:
-	shutil.copy(val, "train/" + val)
+for (val, i) in enumerate(train):
+	shutil.copy(val, "train/cmpb" + ("%04d" % i) + val.split("-")[-1])
 
-for val in test:
-	shutil.copy(val, "test/" + val)
+for (val, i) in enumerate(test):
+	shutil.copy(val, "test/cmpb" + ("%04d" % i) + val.split("-")[-1])
