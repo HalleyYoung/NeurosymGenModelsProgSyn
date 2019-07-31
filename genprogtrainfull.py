@@ -117,7 +117,7 @@ def getCoverage(f):
 
 def toImageArr(for_tup_arr, fname, img):
 	img2 = np.zeros((img.shape[0], img.shape[1], 3))
-    imsave("facades/trainB/" + fname, img)
+    #imsave("facades/trainB/" + fname, img)
 	tot_height = img.shape[0]
 	tot_width = img.shape[1]
 
@@ -168,7 +168,7 @@ def toImageArr(for_tup_arr, fname, img):
 						except: pass
         #imsave("facade-prog-only-train/" + fname, img2)
 		img2[:,:85,:] = img[:,:85,:]
-        imsave("facades/trainA/" + fname, img2)
+        #imsave("facades/trainA/" + fname, img2)
         #img2[:,85:,:] = np.zeros((256,256-85,3))
         #imsave("facade-third-only-train/" + fname, img2)
 

@@ -166,11 +166,10 @@ def toImageArr(for_tup_arr, fname, img):
 							#print("iszeros " + str(np.array_equal(img1, np.zeros(img1.shape))))
 							#print("finished copying img1 to img2")
 						except: pass
-		imsave("facade-prog-only-train/" + fname, img2)
+        #imsave("facade-prog-only-train/" + fname, img2)
 		img2[:,:85,:] = img[:,:85,:]
-		imsave("facade-prog-third-train/" + fname, img2)
-		img2[:,85:,:] = np.zeros((256,256-85,3))
-		imsave("facade-third-only-train/" + fname, img2)
+        #imsave("facade-prog-third-train/" + fname, img2)
+
 
 
 buildings = [img_as_float(imread("../facades/train/" + i)) for i in sorted(list(os.walk("../facades/train"))[-1][2])]
