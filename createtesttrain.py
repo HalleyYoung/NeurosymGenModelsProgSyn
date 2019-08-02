@@ -1,6 +1,7 @@
 import os
 import random
-import shutil
+from skimage.io import imread, imsave
+from skimage.transform import resize
 
 os.chdir("facades")
 a = list(os.walk("./"))[0][2]
@@ -13,12 +14,15 @@ total = len(a)
 train = a[:(total/10)]
 test = a[(total/10):]
 
+if not os.path.isdir("train"):
+    os.mkdir("train")
+if not os.path.isdir("test"):
+    os.mkdir("test")
 
-os.mkdir("train")
-os.mkdir("test")
+for (i, val) in enumerate(train):
+    a = resize(imread(val), (256,256,3))
+    imsave("train/cmpb" + ("%04d" % i) + ".png", a)
 
-for (val, i) in enumerate(train):
-	shutil.copy(val, "train/cmpb" + ("%04d" % i) + val.split("-")[-1])
-
-for (val, i) in enumerate(test):
-	shutil.copy(val, "test/cmpb" + ("%04d" % i) + val.split("-")[-1])
+for (i, val) in enumerate(test):
+    a = resize(imread(val), (256,256,3))
+    imsave("test/cmpb" + ("%04d" % i) + ".png", a)
